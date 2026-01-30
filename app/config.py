@@ -15,3 +15,6 @@ BASE_URL = os.getenv("BASE_URL")
 WEBHOOK_SECRET = os.getenv("WEBHOOK_SECRET")
 
 ADMIN_IDS = list(map(int, os.getenv("ADMIN_IDS", "").split(",")))
+
+GROUP_1_LOG = int(os.getenv("GROUP_1_LOG"))
+GROUP_2_LOG = int(os.getenv("GROUP_2_LOG"))
