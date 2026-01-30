@@ -23,6 +23,16 @@ from app.handlers.ai_message import ai_message
 telegram_app.add_handler(CallbackQueryHandler(ai_callback))
 telegram_app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, ai_message))
 
+from app.handlers.premium import premium_cmd, premium_callback
+from app.webhook import cashfree_webhook
+
+telegram_app.add_handler(CommandHandler("premium", premium_cmd))
+telegram_app.add_handler(CallbackQueryHandler(premium_callback))
+
+@app.post("/cashfree/webhook")
+async def cashfree_hook(request: Request):
+    return await cashfree_webhook(request)
+
 from app.config import BOT_TOKEN, BASE_URL, WEBHOOK_SECRET
 from app.handlers.start import start
 from app.handlers.chat import chat_cmd
