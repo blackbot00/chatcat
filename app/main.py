@@ -10,6 +10,12 @@ from app.handlers.registration import registration_callback
 
 telegram_app.add_handler(CallbackQueryHandler(registration_callback))
 
+from app.handlers.human_chat import human_callback
+from app.handlers.human_message import human_message
+
+telegram_app.add_handler(CallbackQueryHandler(human_callback))
+telegram_app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, human_message))
+
 from telegram.ext import MessageHandler, filters
 from app.handlers.ai_chat import ai_callback
 from app.handlers.ai_message import ai_message
