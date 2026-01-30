@@ -1,0 +1,10 @@
+services:
+  - name: coupledatingbot
+    type: web
+    ports:
+      - port: 8000
+    env:
+      - key: PORT
+        value: "8000"
+    run:
+      command: uvicorn app.main:app --host 0.0.0.0 --port 8000
