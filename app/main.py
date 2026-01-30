@@ -33,6 +33,18 @@ telegram_app.add_handler(CallbackQueryHandler(premium_callback))
 async def cashfree_hook(request: Request):
     return await cashfree_webhook(request)
 
+from app.handlers.admin_status import status_cmd
+from app.handlers.admin_id import id_cmd
+from app.handlers.broadcast import broadcast_cmd
+from app.handlers.admin_actions import ban_cmd, unban_cmd, warn_cmd
+
+telegram_app.add_handler(CommandHandler("status", status_cmd))
+telegram_app.add_handler(CommandHandler("id", id_cmd))
+telegram_app.add_handler(CommandHandler("broadcast", broadcast_cmd))
+telegram_app.add_handler(CommandHandler("ban", ban_cmd))
+telegram_app.add_handler(CommandHandler("unban", unban_cmd))
+telegram_app.add_handler(CommandHandler("warn", warn_cmd))
+
 from app.config import BOT_TOKEN, BASE_URL, WEBHOOK_SECRET
 from app.handlers.start import start
 from app.handlers.chat import chat_cmd
