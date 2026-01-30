@@ -1,0 +1,1 @@
+FREE_AI_LIMIT = 40
