@@ -10,6 +10,13 @@ from app.handlers.registration import registration_callback
 
 telegram_app.add_handler(CallbackQueryHandler(registration_callback))
 
+from telegram.ext import MessageHandler, filters
+from app.handlers.ai_chat import ai_callback
+from app.handlers.ai_message import ai_message
+
+telegram_app.add_handler(CallbackQueryHandler(ai_callback))
+telegram_app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, ai_message))
+
 from app.config import BOT_TOKEN, BASE_URL, WEBHOOK_SECRET
 from app.handlers.start import start
 from app.handlers.chat import chat_cmd
