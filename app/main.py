@@ -45,6 +45,7 @@ telegram_app.add_handler(CommandHandler("start", start))
 telegram_app.add_handler(CommandHandler("chat", chat_cmd))
 telegram_app.add_handler(CommandHandler("ai_on", ai_on))
 telegram_app.add_handler(CommandHandler("ai_off", ai_off))
+telegram_app.add_handler(CommandHandler("giveaway", giveaway))
 
 @app.on_event("startup")
 async def on_startup():
